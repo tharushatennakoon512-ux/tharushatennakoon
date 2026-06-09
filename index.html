@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tharusha Tennakoon</title>
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Lora:wght@700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    </head>
+    <body class="light-mode">
+        <button class="theme-toggle" onclick="toggleDarkMode()">🌙</button>
+    
+        <div class="hero">
+            <h1>Tharusha Tennakoon</h1>
+            <p class="subtitle" align="center">Aspiring AI Engineer · Student at Lyceum International School · Kurunegala · Sri Lanka </p>
+            <div class="social-links">
+            <a href="https://github.com/tharushatennakoon512-ux"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/tharusha-tennakoon-09aa36414/"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/tharusha.tennakoon/"><i class="fab fa-instagram"></i></a>
+            <a href="https://open.spotify.com/user/31qx7fxt3t44aop7c6l2qghrvusq"><i class="fab fa-spotify"></i></a>
+</div>
+<hr color="#263749" size="3" width="80%" align="center">
+        </div>
+
+        <div class="container">
+            <h2>About Me</h2>
+            <table>
+                <tr>
+                    <td>I'm a 15 year old from Sri Lanka, working toward a career in AI engineering. Currently preparing for my O/Ls while building the foundation: learning to code, exploring projects, and figuring out how it all fits together.</td>
+                </tr>
+            </table>
+
+            <h2>Countdown to O/Ls</h2>
+            <table>
+                <tr>
+                    <td><div class="countdown-display" id="countdown"></div></td>
+                </tr>
+            </table>
+
+            <h2>Skills</h2>
+            <table>
+                <tr>
+                    <td>Python      - Learning</td>
+                </tr>
+                <tr>
+                    <td>HTML/CSS    - Comfortable</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- <div class="social-media">
+            <h2>My Social Links</h2>
+            <div class="social-links">
+                <a href="https://www.instagram.com/tharusha.tennakoon/"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/tharusha-tennakoon-9b0a5b24b/"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/tharushatennakoon"><i class="fab fa-github"></i></a>
+            </div>
+        </div> -->
+
+        <script>
+            // Initialize theme on page load
+            function initializeTheme() {
+                const savedTheme = localStorage.getItem('theme') || 'light-mode';
+                document.body.className = savedTheme;
+                updateButtonText();
+            }
+            
+            // Toggle dark mode
+            function toggleDarkMode() {
+                const body = document.body;
+                if (body.classList.contains('light-mode')) {
+                    body.classList.remove('light-mode');
+                    body.classList.add('dark-mode');
+                    localStorage.setItem('theme', 'dark-mode');
+                } else {
+                    body.classList.remove('dark-mode');
+                    body.classList.add('light-mode');
+                    localStorage.setItem('theme', 'light-mode');
+                }
+                updateButtonText();
+            }
+            
+            // Update button text based on current theme
+            function updateButtonText() {
+                const button = document.querySelector('.theme-toggle');
+                const isDarkMode = document.body.classList.contains('dark-mode');
+                button.textContent = isDarkMode ? '☀️' : '🌙';
+            }
+
+            // Countdown
+            const examDate = new Date('2026-12-18');
+
+            function updateCountdown() {
+                const now = new Date();
+                const diff = examDate - now;
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                document.getElementById('countdown').textContent =
+                    `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            }
+
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+            
+            // Initialize on page load
+            window.addEventListener('DOMContentLoaded', initializeTheme);
+        </script>
+    </body>
+</html>
